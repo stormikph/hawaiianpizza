@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	console.log(new Date().toLocaleString());
+	return (
+		<div className='App'>
+			<Header />
+			<TimeInputContainer />
+			<TimeDisplay />
+		</div>
+	);
 }
 
 export default App;
+
+function Header() {
+	return <h1>Let's Make a Hawaiian Pizza!</h1>;
+}
+
+class TimeInputContainer extends Component {
+	render() {
+		return (
+			<div className='time-input-container'>
+				<input type='text' />
+				<button>Enter</button>
+			</div>
+		);
+	}
+}
+
+function TimeDisplay() {
+	return <p>hit</p>;
+}
