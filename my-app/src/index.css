@@ -7,8 +7,9 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	/* max size of chrome popup: */
 	height: 600px;
-	width: 800px;
-	border: 1px solid red;
+	width: 600px;
+	border: 5px dotted #ffc600;
+	background-color: #1e96fc;
 }
 
 code {
