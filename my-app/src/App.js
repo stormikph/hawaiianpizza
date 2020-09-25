@@ -5,11 +5,11 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			// time: 0,
+			time: 0,
 			seconds: '00',
 			minutes: '',
 		};
-		// this.handleEnterTime = this.handleEnterTime.bind(this);
+		this.handleEnterTime = this.handleEnterTime.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 	}
 
@@ -19,15 +19,15 @@ class App extends Component {
 		});
 	}
 
-	// handleEnterTime(timeInputValue) {
-	// 	//e.target.value is always a string
-	// 	const time = Number(timeInputValue);
-	// 	if (time !== 'number' && Number.isNaN(time)) return;
-	// 	this.setState({
-	// 		...this.state,
-	// 		time,
-	// 	});
-	// }
+	handleEnterTime(timeInputValue) {
+		//e.target.value is always a string
+		const time = Number(timeInputValue);
+		if (time !== 'number' && Number.isNaN(time)) return;
+		this.setState({
+			...this.state,
+			time,
+		});
+	}
 
 	render() {
 		const { minutes, seconds } = this.state;
@@ -36,7 +36,9 @@ class App extends Component {
 			<div className='App'>
 				<Header />
 				<TimeInputContainer
-					/*handleEnterTime={this.handleEnterTime}*/ minutes={minutes}
+					handleEnterTime={this.handleEnterTime}
+					minutes={minutes}
+					handleChange={this.handleChange}
 				/>
 				<TimeDisplay minutes={minutes} seconds={seconds} />
 			</div>
@@ -82,7 +84,7 @@ class TimeInputContainer extends Component {
 
 	render() {
 		const { timeInputValue } = this.state;
-		const { minutes } = this.props;
+		const { minutes, handleChange } = this.props;
 
 		return (
 			<div className='time-input-container'>
@@ -92,6 +94,7 @@ class TimeInputContainer extends Component {
 					value={timeInputValue}
 					onChange={this.handleTimeChange}
 					minutes={minutes}
+					handleChange={handleChange}
 				/>
 				<button onClick={this.handleSubmitTime}>Enter</button>
 			</div>
